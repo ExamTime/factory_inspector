@@ -17,8 +17,7 @@ module FactoryInspector
     end
 
     def generate_report
-      timing_logfile = "#{File.dirname(__FILE__)}/../#{@output_filename}"
-      file = File.open(timing_logfile, 'w')
+      file = File.open(output_filename, 'w')
 
       file.write "FACTORY INSPECTOR - #{@reports.values.size} FACTORIES USED\n"
       file.write "  FACTORY NAME                TOTAL  OVERALL   TIME PER  LONGEST   STRATEGIES\n"
