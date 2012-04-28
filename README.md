@@ -32,7 +32,7 @@ Let's take a hypothetical `spec/spec_helper.rb` on a RSpec based
 project; the changes to use FactoryInspector would be:
 
 ```ruby
-  require 'factory_inspector`
+  require 'factory_inspector'
 
 
   inspection_log = "#{File.dirname(__FILE__)}/../log/factory_inspector_report.txt" 
