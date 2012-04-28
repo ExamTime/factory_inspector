@@ -3,7 +3,7 @@ require "factory_inspector/report"
 
 module FactoryInspector
 
-  def self.new(output_filename)
+  def FactoryInspector.new(output_filename)
     FactoryInspector.new(output_filename)
   end
 
