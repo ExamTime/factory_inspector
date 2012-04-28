@@ -21,7 +21,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Let's take a hypothetical `spec/spec_helper.rb` on a RSpec based
+project.
+
+```ruby
+  require 'factory_inspector`
+
+  ...
+
+  inspection_log = "#{File.dirname(__FILE__)}/../log/factory_inspector_report.txt" 
+  factory_inspector = FactoryInspector.new(inspection_log)
+  RSpec.configure do |config|
+    ...
+    config.before :suite do
+      ActiveSupport::Notifications.subscribe("factory_girl.run_factory") do |name, start_time, finish_time,>
+        factory_inspector.analyze(payload[:name], start_time, finish_time, payload[:strategy])
+      end
+    end
+
+    config.after :suite do
+      factory_inspector.generate_report
+      puts "Factory Inspector report in '#{factory_inspector.output_filename}'" 
+    end
+  end
+```
+
+Isn't this clumsy? I'll see if I can make more of it vanish inside the
+Gem, especially the filename generation.
 
 ## Contributing
 
