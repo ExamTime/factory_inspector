@@ -24,18 +24,21 @@ Or install it yourself as:
 
 ## Usage
 
+FactoryInspector should be instantiated with a filename to log
+the report to, then it's hooked into FactoryGirl's notifications
+inside your test configuration.
+
 Let's take a hypothetical `spec/spec_helper.rb` on a RSpec based
-project.
+project; the changes to use FactoryInspector would be:
 
 ```ruby
   require 'factory_inspector`
 
-  ...
 
   inspection_log = "#{File.dirname(__FILE__)}/../log/factory_inspector_report.txt" 
   factory_inspector = FactoryInspector.new(inspection_log)
   RSpec.configure do |config|
-    ...
+
     config.before :suite do
       ActiveSupport::Notifications.subscribe("factory_girl.run_factory") do |name, start_time, finish_time,>
         factory_inspector.analyze(payload[:name], start_time, finish_time, payload[:strategy])
@@ -51,6 +54,23 @@ project.
 
 Isn't this clumsy? I'll see if I can make more of it vanish inside the
 Gem, especially the filename generation.
+
+After the tests have run, the nominated log file will have output
+similar to this:
+
+```
+FACTORY INSPECTOR - 46 FACTORIES USED
+  FACTORY NAME                TOTAL  OVERALL   TIME PER  LONGEST   STRATEGIES
+                              CALLS  TIME (s)  CALL (s)  CALL (s)            
+  school_with_terms             1    0.4783    0.47827  0.4783      [:create]
+  school_with_terms_and_cla     5    2.3859    0.47718  0.5184      [:create]
+  school_leaver                 1    0.2581    0.25808  0.2581      [:create]
+  pre_enrolled_pupil            1    0.2570    0.25704  0.2570      [:create]
+  pupil_school_enrolment_fo     1    0.2008    0.20075  0.2008      [:build]
+  announcement                  5    0.8973    0.17946  0.2327      [:create]
+  sub_class_with_pupils         5    0.7961    0.15921  0.2163      [:create, :build]
+  etc
+```
 
 ## Contributing
 
