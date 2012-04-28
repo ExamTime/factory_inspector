@@ -1,12 +1,12 @@
-require 'factory_inspector/factory_report'
+require 'factory_inspector/report'
 
-describe FactoryInspector::FactoryReport do
+describe FactoryInspector::Report do
 
   let(:foo) { 'FooFactory' }
 
   context 'on default construction' do
     before :all do
-      @report = FactoryInspector::FactoryReport.new(:foo)
+      @report = FactoryInspector::Report.new(:foo)
     end
 
     it 'should be named for the factory' do

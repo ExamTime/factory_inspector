@@ -2,7 +2,7 @@ module FactoryInspector
 
   # Report on how a FactoryGirl Factory was used in a test run.
   # Holds simple metrics and can be updated with new calls.
-  class FactoryReport
+  class Report
 
     attr_reader :name, :calls, :worst_time, :total_time, :strategies
 
