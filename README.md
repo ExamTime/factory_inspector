@@ -5,6 +5,9 @@ are being used during your test runs. This is useful in
 understanding where the time is going during your test
 runs.
 
+This is a developer's tool; the Gem makes no effort to
+sanitize inputs or help you avoid making mistakes.
+
 ## Installation
 
 Add this line to your application's Gemfile:

@@ -17,6 +17,7 @@ module FactoryInspector
     end
 
     def time_per_call_in_seconds
+      return 0 if @calls == 0
       @total_time / @calls
     end
 
