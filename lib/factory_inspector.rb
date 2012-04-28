@@ -3,8 +3,8 @@ require "factory_inspector/report"
 
 module FactoryInspector
 
-  def FactoryInspector.new(output_filename)
-    FactoryInspector.new(output_filename)
+  def self.new(output_filename)
+    Inspector.new(output_filename)
   end
 
   class Inspector
