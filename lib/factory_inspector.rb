@@ -41,7 +41,7 @@ module FactoryInspector
       if not @reports.has_key? name
         @reports[name] = FactoryInspector::Report.new(name)
       end
-      reports[name].update(finish_time - start_time, strategy)
+      @reports[name].update(finish_time - start_time, strategy)
     end
 
   end
