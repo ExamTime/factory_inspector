@@ -10,7 +10,7 @@ describe FactoryInspector::Report do
     end
 
     it 'should be named for the factory' do
-      @report.name.should == :foo
+      @report.factory_name.should == :foo
     end
 
     it 'should have recorded zero calls' do
@@ -18,11 +18,11 @@ describe FactoryInspector::Report do
     end
 
     it 'should have a zero worst time' do
-      @report.worst_time.should == 0
+      @report.worst_time_in_seconds.should == 0
     end
 
     it 'should have a zero total time' do
-      @report.total_time.should == 0
+      @report.total_time_in_seconds.should == 0
     end
 
     it 'should have recorded no strategies' do
@@ -46,11 +46,11 @@ describe FactoryInspector::Report do
     end
 
     it 'should have recorded the total time' do
-      @report.total_time.should == 8
+      @report.total_time_in_seconds.should == 8
     end
 
     it 'should report the time per call' do
-      @report.total_time.should == 8
+      @report.total_time_in_seconds.should == 8
       @report.calls.should == 2
       @report.time_per_call_in_seconds.should == 4
     end

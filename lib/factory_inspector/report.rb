@@ -4,23 +4,28 @@ module FactoryInspector
   # Holds simple metrics and can be updated with new calls.
   class Report
 
-    attr_reader :name, :calls, :worst_time, :total_time, :strategies
+    attr_reader :factory_name,
+                :calls,
+                :worst_time_in_seconds,
+                :total_time_in_seconds,
+                :strategies
 
-    # Initialise a new report
-    # * [name] The name of the factory being reported on
-    def initialize(name)
-      @name = name
+    def initialize(factory_name)
+      @factory_name = factory_name
       @calls = 0
-      @worst_time = 0
-      @total_time = 0
+      @worst_time_in_seconds = 0
+      @total_time_in_seconds = 0
       @strategies = []
     end
 
     def time_per_call_in_seconds
       return 0 if @calls == 0
-      @total_time / @calls
+      @total_time_in_seconds / @calls
     end
 
+    # Update this report with a new call
+    # * [time] The time taken, in seconds, to call the factory
+    # * [strategy] The strategy used by the factory
     def update(time, strategy)
       record_call
       record_time time
@@ -36,8 +41,8 @@ module FactoryInspector
     end
 
     def record_time(time)
-      @worst_time = time if time > @worst_time
-      @total_time += time
+      @worst_time_in_seconds = time if time > @worst_time_in_seconds
+      @total_time_in_seconds += time
     end
 
   end
