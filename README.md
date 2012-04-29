@@ -6,7 +6,9 @@ understanding where the time is going during your test
 runs.
 
 This is a developer's tool; the Gem makes no effort to
-sanitize inputs or help you avoid making mistakes.
+sanitize inputs or help you avoid making mistakes. It
+relies on the changes brought in with FactoryGirl 3.2:
+    http://robots.thoughtbot.com/post/21719164760/factorygirl-3-2-so-awesome-it-needs-to-be-released
 
 ## Installation
 
