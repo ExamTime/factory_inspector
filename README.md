@@ -1,16 +1,17 @@
 # FactoryInspector
 
-This very simple gem reports on how FactoryGirl factories 
+This very simple gem reports on how
+[FactoryGirl](https://github.com/thoughtbot/factory_girl)
 are being used during your test runs. This is useful in
 understanding where the time is going during your test
 runs - while FactoryGirl is useful, overuse can lead to
-serious slowdowns to a cascade of database writes when
-building a test object.
+serious slowdowns due to a cascade of database writes when
+building test objects. The analysis relies on the changes
+brought in with [FactoryGirl 3.2](http://robots.thoughtbot.com/post/21719164760/factorygirl-3-2-so-awesome-it-needs-to-be-released)
 
-This is a developer's tool; the Gem makes no effort to
-sanitize inputs or help you avoid making mistakes. It
-relies on the changes brought in with FactoryGirl 3.2:
-    http://robots.thoughtbot.com/post/21719164760/factorygirl-3-2-so-awesome-it-needs-to-be-released
+This gem is a developer utility and makes no effort to
+sanitize inputs or help you avoid making mistakes, but 
+hopefully it's too simple to need much of that!
 
 ## Installation
 
@@ -28,10 +29,10 @@ Or install it yourself as:
 
 ## Usage
 
-FactoryInspector's API is just two methods - `start_inspection` and `generate_report`. 
+FactoryInspector's API is just two methods; `start_inspection` and `generate_report` 
 
-Let's take a hypothetical `spec/spec_helper.rb` on a RSpec based
-project; the changes to use FactoryInspector would be:
+Assuming you're on a RSpec based project, the changes to your 
+`spec/spec_helper.rb` file to introduce FactoryInspector would be:
 
 ```ruby
   require 'factory_inspector'
