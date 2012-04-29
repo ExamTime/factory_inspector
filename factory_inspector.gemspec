@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["david.kennedy@examtime.com"]
   gem.description   = %q{This very simple gem generates reports on how FactoryGirl factories are being used in your test runs.}
   gem.summary       = %q{Reports on how FactoryGirl is used in test runs.}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/ExamTime/factory_inspector"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
