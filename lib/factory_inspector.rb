@@ -1,22 +1,23 @@
-require "factory_inspector/version"
-require "factory_inspector/report"
+require 'factory_inspector/version'
+require 'factory_inspector/report'
+require 'active_support/notifications'
 
 module FactoryInspector
 
-  def self.new(output_filename)
-    Inspector.new(output_filename)
+  def self.new
+    Inspector.new
   end
 
   class Inspector
 
-    attr_reader :output_filename
-
-    def initialize(output_filename)
-      @output_filename = output_filename
+    def initialize
       @reports = {}
+      ActiveSupport::Notifications.subscribe('factory_girl.run_factory') do |name, start_time, finish_time, id, payload|
+        analyze(payload[:name], start_time, finish_time, payload[:strategy])
+      end
     end
 
-    def generate_report
+    def generate_report(output_filename)
       file = File.open(output_filename, 'w')
 
       file.write "FACTORY INSPECTOR - #{@reports.values.size} FACTORIES USED\n"
@@ -35,6 +36,8 @@ module FactoryInspector
 
       file.close
     end
+
+  private
 
     def analyze(name, start_time, finish_time, strategy)
       if not @reports.has_key? name
