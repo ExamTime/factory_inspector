@@ -2,9 +2,9 @@
 
 This very simple gem reports on how
 [FactoryGirl](https://github.com/thoughtbot/factory_girl)
-are being used during your test runs. This is useful in
+is being used during your test runs. This is useful in
 understanding where the time is going during your test
-runs - while FactoryGirl is useful, overuse can lead to
+runs; while FactoryGirl is useful, overuse can lead to
 serious slowdowns due to a cascade of database writes when
 building test objects. The analysis relies on the changes
 brought in with [FactoryGirl 3.2](http://robots.thoughtbot.com/post/21719164760/factorygirl-3-2-so-awesome-it-needs-to-be-released)
