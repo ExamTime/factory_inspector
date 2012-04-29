@@ -21,10 +21,10 @@ module FactoryInspector
       file = File.open(output_filename, 'w')
 
       file.write "FACTORY INSPECTOR - #{@reports.values.size} FACTORIES USED\n"
-      file.write "  FACTORY NAME                TOTAL  OVERALL   TIME PER  LONGEST   STRATEGIES\n"
-      file.write "                              CALLS  TIME (s)  CALL (s)  CALL (s)            \n"
+      file.write "  FACTORY NAME                     TOTAL  OVERALL   TIME PER  LONGEST   STRATEGIES\n"
+      file.write "                                   CALLS  TIME (s)  CALL (s)  CALL (s)            \n"
       @reports.sort_by{ |name,report| report.time_per_call_in_seconds }.reverse.each do |report_name, report|
-        line = sprintf("  %-25.25s % 5.0d    %5.4f    %5.5f  %5.4f      %s\n",
+        line = sprintf("  %-30.30s % 5.0d    %8.4f    %5.5f  %5.4f      %s\n",
                      report.factory_name,
                      report.calls,
                      report.total_time_in_seconds,
